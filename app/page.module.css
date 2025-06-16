@@ -1,168 +1,108 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
+.content {
+  position: relative;
+  margin: 63px auto 0 auto;
+  width: 1300px;
+  min-height: 500px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
+.community_header {
+  position: relative;
+  margin-top: 23px;
+  width: 1300px;
+  height: 58px;
+  border-bottom: 1px solid #a3a3a7;
 }
 
-.main {
+.community_header .searchForm {
   display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+  justify-content: end;
+  align-items: center;
 }
 
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
+.community_header .searchInput {
+  padding: 0;
   margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-}
-
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
-  display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
+  width: 200px;
+  height: 42px;
   border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
+  border: 1px solid #5a5a64;
+  border-right: 0;
+  font-size: 14px;
+  line-height: 53px;
+  text-indent: 20px;
+}
+
+.community_header .searchInput:focus {
+  outline: none;
+}
+
+.community_header .searchBtn {
+  height: 42px;
+  background: #fff;
+  border: 1px solid #5a5a64;
+  border-left: 0;
+}
+
+.searchSelect {
+  position: relative;
+  margin: 0;
+  width: 120px;
+  height: 42px;
+  z-index: 99;
+  font-size: 14px;
+  font-weight: 400;
+  color: #6a6e76;
+  z-index: 1;
+  padding: 0 0 0 13px;
+}
+
+.searchSelect:focus {
+  outline: none;
+}
+
+.board_list {
+  min-height: 400px;
+}
+
+.board_list .board_item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
+  padding: 17px 0 16px 0;
+  border-bottom: 1px solid #eeedf2;
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
+.board_list .board_item .title {
+  flex: 5;
+  padding-left: 40px;
+  color: black;
+  text-decoration: none;
 }
 
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 158px;
+.board_list .board_item .writer {
+  flex: 1;
 }
 
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
+.board_list .board_item .date {
+  flex: 1;
+  padding-left: 20px;
 }
 
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.board_list .board_item .view {
+  flex: 1;
+  padding-left: 20px;
 }
 
-.footer img {
-  flex-shrink: 0;
+.buttonBox {
+  margin-top: 30px;
+  text-align: right;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+.buttonBox .writeBtn {
+  width: 160px;
+  height: 45px;
+  background: #3392ff;
+  color: white;
+  border: 1px solid #1a6ed8;
+  font-size: 13px;
+  font-weight: bold;
 }

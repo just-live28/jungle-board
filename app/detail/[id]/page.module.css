@@ -1,0 +1,110 @@
+.content {
+  position: relative;
+  margin: 63px auto 0 auto;
+  width: 1300px;
+  min-height: 500px;
+}
+
+.headerBox {
+  position: relative;
+  margin-top: 23px;
+  width: 1300px;
+  border: 1px solid #e0e2ec;
+}
+
+.titleBox {
+  display: flex;
+  padding-left: 30px;
+  height: 139px;
+  color: #36393f;
+  font-size: 22px;
+  line-height: 34px;
+  align-items: center;
+}
+
+.infoBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 59px;
+  color: #6a6e76;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #e0e2ec;
+  border-top: 0;
+}
+
+.leftInfo {
+  flex: 4;
+  padding-left: 30px;
+}
+
+.rightInfo {
+  display: flex;
+  flex: 1;
+}
+
+.rightInfo .dateBox {
+  flex: 1;
+}
+
+.rightInfo .viewBox {
+  flex: 1;
+  text-align: center;
+}
+
+.contentBox {
+  padding: 45px 0 150px 30px;
+  color: #36393f;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 400;
+  min-height: 500px;
+  overflow-y: auto;
+  border-bottom: 1px solid #e0e2ec;
+}
+
+.buttonBox {
+  margin-top: 10px;
+}
+
+.buttonBox .leftButtonBox {
+  float: left;
+}
+
+.buttonBox .rightButtonBox {
+  float: right;
+}
+
+.goListBtn {
+  width: 120px;
+  height: 45px;
+  background: #444;
+  color: #fff;
+  border: 1px solid #555;
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.delBtn {
+  width: 120px;
+  height: 45px;
+  background: rgb(242, 51, 51);
+  color: #fff;
+  border: 1px solid #f90000;
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.corBtn {
+  width: 120px;
+  height: 45px;
+  background: #3392ff;
+  color: #fff;
+  border: 1px solid #1a6ed8;
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 10px;
+}
