@@ -18,6 +18,9 @@ export default function DeleteButton(props) {
                     if (json.success) {
                         alert('게시글이 삭제되었습니다.');
                         router.push('/');
+                        setTimeout(() => {
+                            location.reload();
+                        }, 100);
                     } else {
                         alert('삭제 실패!');
                     }

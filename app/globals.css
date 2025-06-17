@@ -2,6 +2,20 @@
   box-sizing: border-box;
 }
 
-div {
-  /* border: 1px solid black; */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #d2d0d0ff;
+  padding: 20px;
+  height: 60px;
+}
+.navbar a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: black;
+}
+.logo {
+  font-weight: bold;
 }

@@ -1,16 +1,28 @@
-import { ObjectId } from 'mongodb';
 import styles from './page.module.css';
-import { connectDB } from '@/util/database';
 import formatDate from '@/util/util';
 import Link from 'next/link';
 import DeleteButton from './DeleteButton';
+import { headers } from 'next/headers'
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import Reple from './Reple';
 
 export default async function Detail(props) {
     const resolvedParams = await props.params
     let _id = resolvedParams.id;
 
-    const db = (await connectDB).db('board')
-    let result = await db.collection('post').findOne({ _id: new ObjectId(String(_id)) })
+    const headerList = await headers();
+    const host = headerList.get('host');
+    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
+    const incView = await fetch(`${protocol}://${host}/api/post/view/${_id}`, { method: 'PUT' });
+    const resp = await fetch(`${protocol}://${host}/api/post/${_id}`, {
+        method: 'GET',
+        cache: 'no-store',
+    });
+    const result = await resp.json();
+    const session = await getServerSession(authOptions);
+
+    console.log()
 
     return (
         <div className={styles.content}>
@@ -32,13 +44,17 @@ export default async function Detail(props) {
                         <button type="button" className={styles.goListBtn}>목록</button>
                     </Link>
                 </div>
-                <div className={styles.rightButtonBox}>
-                    <DeleteButton id={_id} />
-                    <Link href={`/edit/${_id}`} style={{ color: 'white', textDecoration: 'none' }}>
-                        <button type="button" className={styles.corBtn}>수정</button>
-                    </Link>
-                </div>
+                {
+                    session && (session.user.userId == result.writer || session.user.role == 'admin') &&
+                    <div className={styles.rightButtonBox}>
+                        <DeleteButton id={_id} />
+                        <Link href={`/edit/${_id}`} style={{ color: 'white', textDecoration: 'none' }}>
+                            <button type="button" className={styles.corBtn}>수정</button>
+                        </Link>
+                    </div>
+                }
             </div>
+            <Reple id={_id} />
         </div>
     )
 }

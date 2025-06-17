@@ -1,6 +1,10 @@
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import LogoutButton from "./LogoutButton";
+import Providers from "./providers";
 
 const notoSansKr = Noto_Sans_KR({
   subsets: ['latin'],
@@ -14,14 +18,15 @@ export const metadata = {
   description: "나만무 대비 Next.js 기반 게시판 만들기",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+
   return (
     <html lang="ko" className={notoSansKr.className}>
       <head>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-          integrity="sha512-…"    /* cdnjs 제공 SRI 해시 */
+          integrity="sha512-…"
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
@@ -30,7 +35,15 @@ export default function RootLayout({ children }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Providers>
+          <div className="navbar">
+            <div style={{ marginLeft: '20px', fontWeight: 'bold' }}>Jungle-Board</div>
+            <LogoutButton />
+          </div>
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }

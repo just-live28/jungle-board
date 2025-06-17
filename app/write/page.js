@@ -3,12 +3,13 @@
 import { useState } from 'react';
 import styles from './page.module.css';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 export default function Write() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const writer = 'tbxjvkdldj';    // 나중에 jwt 도입 후 변경
-
+    const { data: session, status } = useSession();
+    const writer = session.user.userId;
     const router = useRouter();
 
     const handleSubmit = async () => {
@@ -34,7 +35,10 @@ export default function Write() {
         const json = await resp.json();
 
         if (json.success) {
-            router.push('/')
+            router.push('/');
+            setTimeout(() => {
+                location.reload();
+            }, 100)
         } else {
             alert('작성 실패: ' + json.message);
         }
@@ -43,7 +47,6 @@ export default function Write() {
     return (
         <div className={styles.content}>
             <h3 style={{ paddingLeft: '20px' }}>{writer}님의 글</h3>
-            {/* <form action='/api/post' method='POST'> */}
             <div className={styles.title}>
                 <input type="text" placeholder="제목을 입력해 주세요 (최대 30자까지 입력 가능)"
                     maxLength="30" onChange={(e) => setTitle(e.target.value)} />

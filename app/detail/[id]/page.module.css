@@ -1,6 +1,6 @@
 .content {
   position: relative;
-  margin: 63px auto 0 auto;
+  margin: 23px auto 0 auto;
   width: 1300px;
   min-height: 500px;
 }
@@ -66,14 +66,19 @@
 
 .buttonBox {
   margin-top: 10px;
+  position: relative;
 }
 
 .buttonBox .leftButtonBox {
-  float: left;
+  text-align: left;
+  display: inline-block;
 }
 
 .buttonBox .rightButtonBox {
-  float: right;
+  text-align: right;
+  display: inline-block;
+  position: absolute;
+  right: 0;
 }
 
 .goListBtn {
@@ -107,4 +112,49 @@
   font-size: 13px;
   font-weight: bold;
   margin-right: 10px;
+}
+
+.repleList {
+  padding-top: 10px;
+  border-top: 1px solid #e0e2ec;
+}
+
+.repleInputContainer {
+  display: flex;
+  border: 1px solid #eee;
+  background-color: #f9f9fb;
+  padding: 10px;
+  border-radius: 4px;
+  align-items: stretch;
+  min-height: 150px;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.repleInput {
+  flex: 1;
+  resize: none;
+  border: none;
+  padding: 15px;
+  font-size: 14px;
+  color: #999;
+  background-color: white;
+  min-height: 130px;
+  outline: none;
+}
+
+.submitButton {
+  width: 80px;
+  background-color: #3f4557;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-orientation: mixed;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 0;
+}
+
+.submitButton:hover {
+  background-color: #2f3344;
 }

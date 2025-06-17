@@ -1,12 +1,25 @@
 import Link from 'next/link';
 import styles from './page.module.css';
-import { connectDB } from '@/util/database';
 import formatDate from '@/util/util';
+import { headers } from 'next/headers'
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import { redirect } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
 
 export default async function Board() {
+  const headerList = await headers();
+  const host = headerList.get('host');
+  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
+  const result = await fetch(`${protocol}://${host}/api/post`, { method: 'GET', });
+  const posts = await result.json();
 
-  const db = (await connectDB).db('board')
-  let result = await db.collection('post').find().toArray()
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/api/auth/signin");
+  }
 
   return (
     <div className={styles.content}>
@@ -26,7 +39,7 @@ export default async function Board() {
       </div>
       <div className={styles.board_list} >
         {
-          result.map((post, i) => {
+          posts.map((post, i) => {
             return (
               <div className={styles.board_item} key={i}>
                 <Link href={`/detail/${post._id}`} className={styles.title}>
