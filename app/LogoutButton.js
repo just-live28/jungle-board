@@ -10,7 +10,7 @@ export default function LogoutButton() {
         <>
             <div style={{ textAlign: 'right' }}>
                 환영합니다, {session.user.userId}님!
-                <button onClick={() => { signOut() }} style={{
+                <button onClick={() => { signOut({ callbackUrl: '/' }) }} style={{
                     padding: '0.6rem',
                     backgroundColor: '#4caf50',
                     color: '#fff',

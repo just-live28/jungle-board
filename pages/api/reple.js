@@ -21,6 +21,6 @@ export default async function reple_post_handler(request, response) {
             return response.status(500).json({ success: false, message: 'DB 오류!' });
         }
 
-        return response.status(200).json({ success: true, message: '댓글 작성 완료!' });
+        return response.status(200).json({ success: true, message: '댓글 작성 완료!', reple: document });
     }
 }
