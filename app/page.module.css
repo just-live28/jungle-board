@@ -93,7 +93,7 @@
 }
 
 .buttonBox {
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: right;
 }
 
@@ -105,4 +105,37 @@
   border: 1px solid #1a6ed8;
   font-size: 13px;
   font-weight: bold;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  gap: 8px; /* ← 간격 조절 포인트 */
+}
+
+.pagination li {
+  display: inline-block;
+}
+
+.pagination li a {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.pagination li.active a {
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination li.disabled a {
+  color: #ccc;
+  pointer-events: none;
+  border-color: #eee;
 }

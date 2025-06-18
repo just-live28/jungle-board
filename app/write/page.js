@@ -9,7 +9,7 @@ export default function Write() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const { data: session, status } = useSession();
-    const writer = session.user.userId;
+    const writer = session?.user.userId;
     const router = useRouter();
 
     const handleSubmit = async () => {

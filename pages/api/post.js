@@ -4,8 +4,20 @@ export default async function board_post_handler(request, response) {
     const db = (await connectDB).db('board')
 
     if (request.method == 'GET') {
-        const result = await db.collection('post').find().toArray();
-        return response.status(200).json(result);
+        const keyword = request.query.keyword || ''
+        const page = parseInt(request.query.page || '1')
+        const limit = 10
+        const query = keyword ? { title: { $regex: keyword, $options: 'i' } } : {}
+
+        const totalCount = await db.collection('post').countDocuments(query)
+        const posts = await db.collection('post')
+            .find(query)
+            .sort({ _id: -1 })
+            .skip((page - 1) * limit)
+            .limit(limit)
+            .toArray()
+
+        response.status(200).json({ posts, totalCount })
     }
 
     if (request.method == 'POST') {
