@@ -1,4 +1,4 @@
-[Jungle-Board 배포 사이트]<br>
+[Jungle-Board 배포 사이트] (Ctrl + 클릭 해주세요)<br>
 <a href="http://13.124.75.14:3000/" target="_blank" rel="noopener noreferrer">
   링크
 </a>
