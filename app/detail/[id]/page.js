@@ -13,7 +13,7 @@ export default async function Detail(props) {
 
     const headerList = await headers();
     const host = headerList.get('host');
-    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
+    const protocol = 'http';
     const incView = await fetch(`${protocol}://${host}/api/post/view/${_id}`, { method: 'PUT' });
     const resp = await fetch(`${protocol}://${host}/api/post/${_id}`, {
         method: 'GET',

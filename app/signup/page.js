@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import styles from './page.module.css';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function SignUpPage() {
     const [name, setName] = useState('')
@@ -107,6 +108,7 @@ export default function SignUpPage() {
                 </div>
 
                 <div className={styles.buttonBox}>
+                    <Link href={'/signin'} style={{ marginRight: '15px', textDecoration: 'none' }}>돌아가기</Link>
                     <button type="submit" className={styles.registerBtn}>가입하기</button>
                 </div>
             </form>

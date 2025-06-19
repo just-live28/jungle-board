@@ -51,7 +51,10 @@ export default function SignInPage() {
 
                     <p className={styles.signupText}>
                         아직 회원이 아니신가요?{' '}
-                        <button onClick={() => router.push('/signup')} className={styles.signupButton}>
+                        <button onClick={(e) => {
+                            e.preventDefault();
+                            router.push('/signup');
+                        }} className={styles.signupButton}>
                             회원가입
                         </button>
                     </p>

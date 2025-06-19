@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 export default async function Board(params) {
   const headerList = await headers();
   const host = headerList.get('host');
-  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
+  const protocol = 'http';
 
   const searchParams = await params.searchParams;
   const keyword = searchParams.keyword || '';
