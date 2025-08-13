@@ -1,6 +1,4 @@
-[Jungle-Board 배포 사이트] (Ctrl + 클릭 해주세요)<br>
-<a href="http://13.124.75.14:3000/" target="_blank" rel="noopener noreferrer">
-  링크
-</a>
+[Jungle-Board]
+일주일 간 Next.js를 학습한 뒤, 게시글 및 댓글 기능이 구현된 게시판을 만들어 보았습니다.
 
-Next.js로 백엔드-프론트엔드를 구현하였고, 데이터베이서로는 MongoDB를 사용했습니다.
+Next.js로 백엔드-프론트엔드를 구현하였고, 데이터베이스로는 MongoDB를 사용했습니다.
